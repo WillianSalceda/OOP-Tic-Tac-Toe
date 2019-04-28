@@ -19,8 +19,8 @@ import keyboard
 
 class TicTacToe:
     def __init__(self):
-       pass
-    
+        self.difficultAI = 1
+        self.playWith = 3  # 3 = Strings and Numbers
     def menuSelection(self):
         os.system('cls')
 
@@ -53,19 +53,21 @@ class TicTacToe:
             m.getch()
             objectRun.menuSelection()
              
-    def drawBoard(self):
+    def drawBoard(self, topL='?', topM='!', topR='?',
+                        midL='!', midM='?', midR='!',
+                        lowL='?', lowM='!', lowR='?',):
         board = {
-            'top-L': '?',
-            'top-M': '!',
-            'top-R': '?',
+            'top-L': topL,
+            'top-M': topM,
+            'top-R': topR,
 
-            'mid-L': '!',
-            'mid-M': '?',
-            'mid-R': '!',
+            'mid-L': midL,
+            'mid-M': midM,
+            'mid-R': midR,
 
-            'low-L': '?',
-            'low-M': '!',
-            'low-R': '?',
+            'low-L': lowL,
+            'low-M': lowM,
+            'low-R': lowR,
         }
 
         print(' {0} | {1} | {2}\n'
@@ -95,7 +97,19 @@ class TicTacToe:
 
         try:
             if option == 1:
-                pass
+                os.system('cls')
+
+                self.drawBoard()
+                if self.playWith == 1:  # Numbers
+                    print('Player 1, it\'s your turn\n'
+                          'You can choose between 1 (TOP LEFT) up to 9 (BOTTOM RIGHT)')
+
+                    playerOne = int('I\'ll go with ')
+        
+                elif self.playWith == 2:  # Strings
+                    pass
+                else:  # Strings and Numbers
+                    pass
             elif option == 2:
                 pass
             elif option == 3:
@@ -110,6 +124,36 @@ class TicTacToe:
         except:
             print('ERROR AT LINE 85, GO FIND WHAT IS WRONG')
 
+    def playerOptions(self):
+        if playerOne == 1:
+            os.system('cls')
+            drawBoard(topL='X')
+        elif playerOne == 2:
+            os.system('cls')
+            drawBoard(topM='X')
+        elif playerOne == 3:
+            os.system('cls')
+            drawBoard(topR='X')
+        elif playerOne == 4:
+            os.system('cls')
+            drawBoard(midL='X')
+        elif playerOne == 5:
+            os.system('cls')
+            drawBoard(midM='X')
+        elif playerOne == 6:
+            os.system('cls')
+            drawBoard(midR='X')
+        elif playerOne == 7:
+            os.system('cls')
+            drawBoard(lowL='X')
+        elif playerOne == 8:
+            os.system('cls')
+            drawBoard(lowM='X')
+        elif playerOne == 9:
+            os.system('cls')
+            drawBoard(lowR='X')
+        else:
+            pass
 
     def options(self):
         os.system('cls')
@@ -127,13 +171,19 @@ class TicTacToe:
             m.getch()
             objectRun.menuSelection()
               
-        difficultAI = int(input('[1] - EASY\n'
+
+        self.difficultAI = int(input('[1] - EASY\n'
                                 '[2] - MEDIUM\n'
                                 '[3] - HARD\n'
                                 'I\'ll go with '))
 
+        self.playWith = int(input('[1] - NUMBERS\n'
+                                '[2] - STRING\n'
+                                '[3] - BOTH\n'
+                                'I\'ll go with '))
+
 
 if __name__ == '__main__':
-    #objectRun = TicTacToe()
+    objectRun = TicTacToe()
 
-    #objectRun.menuSelection()
+    objectRun.menuSelection()
